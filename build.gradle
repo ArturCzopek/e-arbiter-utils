@@ -6,6 +6,7 @@ apply plugin: 'java'
 apply plugin: 'kotlin'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'maven-publish'
+apply plugin: 'org.sonarqube'
 
 buildscript {
     repositories {
@@ -13,16 +14,19 @@ buildscript {
         jcenter()
         maven { url 'http://repo.spring.io/release' }
         maven { url 'https://repo.spring.io/libs-milestone' }
+
     }
     dependencies {
-        classpath('org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE')
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE'
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:' + kotlinVersion
+        classpath 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:' + sonarVersion
+
     }
 }
 
 publishing {
     repositories {
-        maven { url System.getenv("E_ARB_MVN_REPO_WRITE").toString() }
+        maven { url System.getenv('E_ARB_MVN_REPO_WRITE').toString() }
     }
 
     publications {
@@ -41,10 +45,17 @@ jar {
     version = version
 }
 
+sonarqube {
+    properties {
+        property 'sonar.projectName', 'e-Arbiter Utils'
+        property 'sonar.projectKey', 'pl.cyganki:e-Arbiter-utils'
+    }
+}
+
 sourceCompatibility = 1.8
 
 repositories {
-    maven { url System.getenv("E_ARB_MVN_REPO_READ").toString() }
+    maven { url System.getenv('E_ARB_MVN_REPO_READ').toString() }
     mavenCentral()
 }
 
