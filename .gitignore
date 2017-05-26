@@ -1,0 +1,19 @@
+# Gradle and builds #
+.gradle
+/build/
+
+# Logs
+*.log
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# IntelliJ
+out/
+.idea/
+**/*.iml
