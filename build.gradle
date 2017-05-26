@@ -1,34 +1,58 @@
-group 'e-arbiter-utils'
-version '1.0-SNAPSHOT'
-
-buildscript {
-    ext.kotlin_version = '1.1.2-4'
-
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
-}
-
-
-jar {
-    baseName = 'e-arbiter-utils'
-    version = '1.0-SNAPSHOT'
-}
+group 'pl.cyganki'
+version = version
 
 apply plugin: 'idea'
 apply plugin: 'java'
 apply plugin: 'kotlin'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'maven-publish'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+        maven { url 'http://repo.spring.io/release' }
+        maven { url 'https://repo.spring.io/libs-milestone' }
+    }
+    dependencies {
+        classpath('org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE')
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:' + kotlinVersion
+    }
+}
+
+publishing {
+    repositories {
+        maven { url System.getenv("E_ARB_MVN_REPO_WRITE").toString() }
+    }
+
+    publications {
+        maven(MavenPublication) {
+            groupId 'pl.cyganki'
+            artifactId 'e-arbiter-utils'
+            version = version
+
+            from components.java
+        }
+    }
+}
+
+jar {
+    baseName = name
+    version = version
+}
 
 sourceCompatibility = 1.8
 
 repositories {
+    maven { url System.getenv("E_ARB_MVN_REPO_READ").toString() }
     mavenCentral()
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile 'org.jetbrains.kotlin:kotlin-stdlib-jre8:' + kotlinVersion
+    compile 'org.springframework:spring-context:' + springCoreVersion
+    compile 'org.springframework.boot:spring-boot-starter-web:' + springBootVersion
+    compile 'io.springfox:springfox-swagger2:' + swaggerVersion
+    compile 'io.springfox:springfox-swagger-ui:' + swaggerVersion
+    testCompile 'junit:junit:4.12'
 }

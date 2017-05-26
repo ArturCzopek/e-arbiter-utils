@@ -1,0 +1,35 @@
+language: java
+jdk: oraclejdk8
+dist: trusty
+
+branches:
+  only:
+  - master
+
+before_cache:
+- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
+cache:
+  directories:
+  - "$HOME/.m2/repository"
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
+  - "$HOME/.sonar/cache"
+  - ".gradle"
+
+script:
+ - echo Hello Travis for e-Arbiter Utils
+ - ./gradlew build
+ - ./gradlew sonarqube -Dsonar.host.url=https://sonarqube.com -Dsonar.organization=cyganki -Dsonar.login=$SONAR_TOKEN
+# TODO uncomment, you know when..:)
+# - ng test --watch=false
+
+after_success:
+ - ./gradlew publish
+
+notifications:
+  email: false
+  slack:
+    rooms:
+      secure: hyV8HTWLz+2j6OtPiU56yXBmE9R8cwBjwFVTtVmSTLiXHav+wxNifxvg5xbMMvc8m6RQYhIjt/iJkOTyYIKzwMkSmmpDJj2p+xfvCJ2nWHJXg83xt7YplN3jc9a8qcrgI9nARjSq17AUfGFXmYKsuNW9E+BfS2oD3YAhxOTJaGrJyUZfOYh7m9yOJm5t26sCiY2CXR5BsIqcLAnllW0UyzKnsG8sxGooeZsoerwcwazqP2g/KMAe3U9V4nZhbFdltXfWinqjT+2ii3YzXOG1ADcf6miNQvVQYEUmf1DiCnMwodsj7qIDXUkzdzKgdLZt9F5OXSt6v+TaxdqWh1hB+Ax/F1asSlCyI/v42wZJxAMmshycmZLshpvKcuIv2G7Xp6Ln0U+3bJ3/UutZFqZ7mGbA007GC4jZQE8Z/kpIeDU1RdzVg35A2eZr0fyr82maIihzsVS32v4Bo7DcllSBolF8WPnKWWmD4GBPOGGIC9Gieqhz2nqwNcOzEkxvcLg4RUIr6YOIsVKUT1CX5IAMhGOjS6qf8DI5wDSdf1rniWdAPjm2asmH0SlXRoOJltOd7AfPgXohc392zfYb/YoSxxxISzQJkxW3tkl4LyXTFZAq1uGXXD5/PSKpifeTqEMxiQ43EuqhQlAhcdUGliuyMWUffWNE9N3P3hgJ8HuiCzU=
