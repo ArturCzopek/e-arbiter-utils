@@ -15,5 +15,5 @@ import org.springframework.context.annotation.Import
 @Target(AnnotationTarget.CLASS)
 @MustBeDocumented
 @Import(AuthModuleInterface::class)
-@EnableFeignClients
+@EnableFeignClients("pl.cyganki.utils.modules")
 annotation class EnableArbiterModules

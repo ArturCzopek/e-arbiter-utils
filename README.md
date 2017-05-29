@@ -6,5 +6,4 @@ Library for e-Arbiter projects with widely used functionality. Every of them is 
 
 To add library to your project:
 1. Add this link to your repositories: `"https://mymavenrepo.com/repo/tpcuo7p3QNPGqEXXYJZK/"`
-2. Add this dependency to your project: `compile('pl.cyganki:e-arbiter-utils')
-`
+2. Add this dependency to your project: `compile('pl.cyganki:e-arbiter-utils')`
