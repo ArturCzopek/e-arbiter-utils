@@ -54,13 +54,17 @@ sourceCompatibility = 1.8
 repositories {
     maven { url System.getenv('E_ARB_MVN_REPO_READ').toString() }
     mavenCentral()
+    maven { url 'http://repo.spring.io/release' }
+    maven { url 'https://repo.spring.io/libs-milestone' }
 }
 
 dependencies {
     compile 'org.jetbrains.kotlin:kotlin-stdlib-jre8:' + kotlinVersion
     compile 'org.springframework:spring-context:' + springCoreVersion
     compile 'org.springframework.boot:spring-boot-starter-web:' + springBootVersion
+    compile 'org.springframework.boot:spring-boot-starter-test:' + springBootVersion
     compile 'io.springfox:springfox-swagger2:' + swaggerVersion
     compile 'io.springfox:springfox-swagger-ui:' + swaggerVersion
+    compile 'io.springfox:springfox-staticdocs:' + swaggerVersion
     testCompile 'junit:junit:4.12'
 }
