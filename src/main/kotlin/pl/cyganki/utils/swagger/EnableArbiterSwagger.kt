@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Import
  * specified profile, set e-arbiter.swagger.enabled property on false
  */
 @Retention(AnnotationRetention.RUNTIME)
-@Target(AnnotationTarget.TYPE)
+@Target(AnnotationTarget.CLASS)
 @MustBeDocumented
-@Import(SwaggerConfiguration::class, SwaggerController::class)annotation class EnableArbiterSwagger
+@Import(SwaggerConfiguration::class, SwaggerController::class)
+annotation class EnableArbiterSwagger

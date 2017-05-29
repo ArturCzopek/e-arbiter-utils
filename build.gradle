@@ -63,6 +63,7 @@ dependencies {
     compile 'org.springframework:spring-context:' + springCoreVersion
     compile 'org.springframework.boot:spring-boot-starter-web:' + springBootVersion
     compile 'org.springframework.boot:spring-boot-starter-test:' + springBootVersion
+    compile 'org.springframework.cloud:spring-cloud-starter-feign:' + springBootCloudVersion
     compile 'io.springfox:springfox-swagger2:' + swaggerVersion
     compile 'io.springfox:springfox-swagger-ui:' + swaggerVersion
     compile 'io.springfox:springfox-staticdocs:' + swaggerVersion

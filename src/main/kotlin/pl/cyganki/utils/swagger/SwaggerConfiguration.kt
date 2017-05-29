@@ -17,7 +17,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2
 
 @Configuration
 @EnableSwagger2
-@ConditionalOnProperty("e-arbiter.swagger.enabled")
+@ConditionalOnProperty(value = "e-arbiter.swagger.enabled", matchIfMissing = true)
 @ConfigurationProperties(prefix = "e-arbiter.swagger")
 open class SwaggerConfiguration {
 
@@ -27,6 +27,8 @@ open class SwaggerConfiguration {
     open var contactName: String = "cyganki"
     open var contactAddress: String = "artur@simplecoding.pl"
     open var contactUrl: String = "http://simplecoding.pl"
+
+    val API_REGEX = "/api.*"
 
     @Bean
     open fun api(): Docket {
@@ -51,9 +53,5 @@ open class SwaggerConfiguration {
         return and(
                 regex(API_REGEX)
         )
-    }
-
-    companion object {
-        val API_REGEX = "/api.*"
     }
 }
