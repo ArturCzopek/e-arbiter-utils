@@ -8,6 +8,9 @@ branches:
   only:
   - master
 
+before_install:
+ - chmod +x ./scripts/**
+
 before_cache:
 - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
 - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
@@ -21,10 +24,10 @@ cache:
   - ".gradle"
 
 script:
- - ./build.sh
+ - ./scripts/build.sh
 
 after_success:
- - ./publish.sh
+ - ./scripts/publish.sh
 
 notifications:
   email: false

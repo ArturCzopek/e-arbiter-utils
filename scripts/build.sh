@@ -1,8 +1,11 @@
 #!/bin/bash
 
 echo "Build script for e-Arbiter Utils"
+cd ..
 ./gradlew build
+
 echo "Branch: " + $TRAVIS_BRANCH
+
 if [[ $TRAVIS_BRANCH == 'master' ]]
 then
   echo "Start sonar analysis"
@@ -10,3 +13,5 @@ then
 else
   echo "No analysis"
 fi
+
+cd scripts/
