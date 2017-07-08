@@ -2,9 +2,9 @@
 
 cd $TRAVIS_BUILD_DIR
 
-echo "Branch: "$TRAVIS_BRANCH
+echo "Branch: "$TRAVIS_BRANCH" pull request: "$TRAVIS_PULL_REQUEST
 
-if [[ $TRAVIS_BRANCH == 'master' ]]
+if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST != 'false' ]]
 then
   echo "Publish new version on maven repository"
   ./gradlew publish
