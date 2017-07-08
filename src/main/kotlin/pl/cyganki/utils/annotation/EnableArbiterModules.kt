@@ -1,15 +1,16 @@
-package pl.cyganki.utils.modules
+package pl.cyganki.utils.annotation
 
 import org.springframework.cloud.netflix.feign.EnableFeignClients
 import org.springframework.context.annotation.Import
+import pl.cyganki.utils.modules.AuthModuleInterface
 
 /**
- * This indicates that communication between modules is available
- * In this case, you can use every interface from
- * {@link pl.cyganki.utils.modules.clients}
+ * This indicates that communication between modules is available by proper interfaces.
  *
  * If you want to disable it for specified profile,
  * set e-arbiter.modules.enabled property on false
+ *
+ * @see pl.cyganki.utils.modules
  */
 @Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.CLASS)

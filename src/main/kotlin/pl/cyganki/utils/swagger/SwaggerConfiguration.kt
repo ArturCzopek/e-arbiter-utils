@@ -1,6 +1,5 @@
 package pl.cyganki.utils.swagger
 
-import com.google.common.base.Predicate
 import com.google.common.base.Predicates.and
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.boot.context.properties.ConfigurationProperties
@@ -14,6 +13,13 @@ import springfox.documentation.service.Contact
 import springfox.documentation.spi.DocumentationType
 import springfox.documentation.spring.web.plugins.Docket
 import springfox.documentation.swagger2.annotations.EnableSwagger2
+
+/**
+ * Configuration for Swagger UI
+ * It can be used in application by using proper annotation/property.
+ *
+ * @see pl.cyganki.utils.annotation.EnableArbiterSwagger
+ */
 
 @Configuration
 @EnableSwagger2
@@ -29,6 +35,7 @@ open class SwaggerConfiguration {
     open var contactUrl: String = "http://simplecoding.pl"
 
     val API_REGEX = "/api.*"
+    val ADMIN_REGEX = "/admin.*"
 
     @Bean
     open fun api(): Docket {
@@ -49,9 +56,8 @@ open class SwaggerConfiguration {
                 .build()
     }
 
-    private fun paths(): Predicate<String> {
-        return and(
-                regex(API_REGEX)
-        )
-    }
+    private fun paths() = and(
+            regex(API_REGEX),
+            regex(ADMIN_REGEX)
+    )
 }

@@ -21,12 +21,10 @@ cache:
   - ".gradle"
 
 script:
- - echo Hello Travis for e-Arbiter Utils
- - ./gradlew build
- - ./gradlew sonarqube -Dsonar.host.url=https://sonarqube.com -Dsonar.organization=cyganki -Dsonar.login=$SONAR_TOKEN
+ - ./build.sh
 
 after_success:
- - ./gradlew publish
+ - ./publish.sh
 
 notifications:
   email: false
