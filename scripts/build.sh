@@ -1,10 +1,11 @@
 #!/bin/bash
 
-echo "Build script for e-Arbiter Utils"
-cd ..
-./gradlew build
+cd $TRAVIS_BUILD_DIR
 
-echo "Branch: " + $TRAVIS_BRANCH
+echo "Build script for e-Arbiter Utils"
+echo "Branch: "$TRAVIS_BRANCH
+
+./gradlew build
 
 if [[ $TRAVIS_BRANCH == 'master' ]]
 then
@@ -13,5 +14,3 @@ then
 else
   echo "No analysis"
 fi
-
-cd scripts/
