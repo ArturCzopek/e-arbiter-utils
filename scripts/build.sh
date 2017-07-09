@@ -7,6 +7,8 @@ echo "Branch: "$TRAVIS_BRANCH", pull request: "$TRAVIS_PULL_REQUEST
 
 gradlew_output=$(./gradlew build); gradlew_return_code=$?
 
+echo "$gradlew_output";
+
 if (( $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' && gradlew_return_code == 0 ))
 then
     echo "Gradle build - SUCCESS";
