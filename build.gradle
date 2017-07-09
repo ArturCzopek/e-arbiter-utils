@@ -1,4 +1,4 @@
-group 'pl.cyganki'
+group = group
 version = version
 
 apply plugin: 'idea'
@@ -28,8 +28,8 @@ publishing {
 
     publications {
         maven(MavenPublication) {
-            groupId 'pl.cyganki'
-            artifactId 'e-arbiter-utils'
+            groupId = group
+            artifactId = name
             version = version
 
             from components.java
@@ -52,14 +52,14 @@ sonarqube {
 sourceCompatibility = 1.8
 
 repositories {
-    maven { url System.getenv('E_ARB_MVN_REPO_READ').toString() }
     mavenCentral()
+    maven { url System.getenv('E_ARB_MVN_REPO_READ').toString() }
     maven { url 'http://repo.spring.io/release' }
     maven { url 'https://repo.spring.io/libs-milestone' }
 }
 
 dependencies {
-    compile 'org.jetbrains.kotlin:kotlin-stdlib-jre8:' + kotlinVersion
+    compile 'org.jetbrains.kotlin:kotlin-stdlib-jre8:' + kotlinVersion, { ext { fatJarExclude = true } }    // it means that this library won't be added to fatJar
     compile 'org.springframework:spring-context:' + springCoreVersion
     compile 'org.springframework.boot:spring-boot-starter-web:' + springBootVersion
     compile 'org.springframework.boot:spring-boot-starter-test:' + springBootVersion
@@ -67,5 +67,6 @@ dependencies {
     compile 'io.springfox:springfox-swagger2:' + swaggerVersion
     compile 'io.springfox:springfox-swagger-ui:' + swaggerVersion
     compile 'io.springfox:springfox-staticdocs:' + swaggerVersion
+    compile 'io.github.microutils:kotlin-logging:' + kotlinLoggerVersion
     testCompile 'junit:junit:4.12'
 }

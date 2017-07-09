@@ -8,7 +8,12 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import springfox.documentation.staticdocs.Swagger2MarkupResultHandler
 
-
+/**
+ * Method which generate API documentation based on Swagger
+ * REMEMBER! Swagger must be enabled in test!
+ *
+ * @see pl.cyganki.utils.annotation.EnableArbiterSwagger
+ */
 @Throws(Exception::class)
 fun generateApiDoc(mockMvc: MockMvc) {
     mockMvc.perform(get("/v2/api-docs")
