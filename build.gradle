@@ -29,7 +29,7 @@ publishing {
     publications {
         maven(MavenPublication) {
             groupId = group
-            artifactId = name
+            artifactId = utilsLibName
             version = version
 
             from components.java
