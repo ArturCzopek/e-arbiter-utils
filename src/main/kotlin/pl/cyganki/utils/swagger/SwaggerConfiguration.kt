@@ -1,6 +1,6 @@
 package pl.cyganki.utils.swagger
 
-import com.google.common.base.Predicates.and
+import com.google.common.base.Predicates.or
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Bean
@@ -20,7 +20,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2
  *
  * @see pl.cyganki.utils.annotation.EnableArbiterSwagger
  */
-
 @Configuration
 @EnableSwagger2
 @ConditionalOnProperty(value = "e-arbiter.swagger.enabled", matchIfMissing = true)
@@ -56,7 +55,7 @@ open class SwaggerConfiguration {
                 .build()
     }
 
-    private fun paths() = and(
+    private fun paths() = or(
             regex(API_REGEX),
             regex(ADMIN_REGEX)
     )

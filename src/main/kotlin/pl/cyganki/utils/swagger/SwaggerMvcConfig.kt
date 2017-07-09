@@ -28,7 +28,7 @@ open class SwaggerMvcConfig(
     override fun addViewControllers(registry: ViewControllerRegistry) {
         registry.addViewController("/$swaggerUrl").setViewName("swaggerUrlAlias")
         registry.addViewController("/swagger-ui.html").setViewName("swaggerUrl")
-        H2ConsoleMvcConfig.logger.info("Initialized view controller for Swagger. Alias Path: $swaggerUrl")
+        H2ConsoleMvcConfig.logger.info("Initialized view controller for Swagger. Alias Path: /$swaggerUrl")
     }
 
     companion object: KLogging()
