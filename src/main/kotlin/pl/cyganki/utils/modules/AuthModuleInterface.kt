@@ -3,6 +3,7 @@ package pl.cyganki.utils.modules
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.cloud.netflix.feign.FeignClient
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestHeader
 import pl.cyganki.utils.GlobalValues
 import pl.cyganki.utils.security.dto.User
@@ -25,6 +26,8 @@ import pl.cyganki.utils.security.dto.User
 @ConditionalOnProperty(value = "e-arbiter.modules.enabled", matchIfMissing = true)
 interface AuthModuleInterface {
 
+    // PUBLIC
+
     @GetMapping("/api/user")
     fun getUser(@RequestHeader(GlobalValues.AUTH_TOKEN) token: String): User
 
@@ -34,4 +37,8 @@ interface AuthModuleInterface {
     @GetMapping("/api/token")
     fun getToken(): String
 
+    // PRIVATE
+
+    @GetMapping("/inner/user/name/{id}")
+    fun getUserNameById(@PathVariable id: Long): String
 }
