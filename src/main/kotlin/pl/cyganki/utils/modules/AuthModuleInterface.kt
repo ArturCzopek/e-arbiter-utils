@@ -40,5 +40,5 @@ interface AuthModuleInterface {
     // PRIVATE
 
     @GetMapping("/inner/user/name/{id}")
-    fun getUserNameById(@PathVariable id: Long): String
+    fun getUserNameById(@PathVariable("id") id: Long): String
 }
