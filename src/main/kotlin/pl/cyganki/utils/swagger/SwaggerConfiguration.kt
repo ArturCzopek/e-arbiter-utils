@@ -33,8 +33,8 @@ open class SwaggerConfiguration {
     open var contactAddress: String = "artur@simplecoding.pl"
     open var contactUrl: String = "http://simplecoding.pl"
 
-    val API_REGEX = "/api.*"
-    val ADMIN_REGEX = "/admin.*"
+    private val API_REGEX = "/api.*"
+    private val ADMIN_REGEX = "/admin.*"
 
     @Bean
     open fun api(): Docket {
