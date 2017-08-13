@@ -17,14 +17,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @Configuration
 @ConditionalOnProperty(value = "e-arbiter.basic-security.enabled", matchIfMissing = true)
-open class BasicSecurityConfig(
+class BasicSecurityConfig(
         @Value("\${e-arbiter.clientUrl}") private val clientUrl: String,
         @Value("\${e-arbiter.proxyUrl}") private val proxyUrl: String,
         @Value("\${e-arbiter.monitoringUrl}") private val monitoringUrl: String
 ) {
 
     @Bean
-    open fun corsConfigurer(): WebMvcConfigurer {
+    fun corsConfigurer(): WebMvcConfigurer {
         return object : WebMvcConfigurerAdapter() {
             override fun addCorsMappings(registry: CorsRegistry) {
                 registry.apply {

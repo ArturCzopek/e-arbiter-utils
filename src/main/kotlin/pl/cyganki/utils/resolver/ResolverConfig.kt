@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * @see pl.cyganki.annotation.EnableArbiterResolvers
  */
 @Configuration
-open class ResolverConfig(
+class ResolverConfig(
         val userResolver: UserResolver
 ) : WebMvcConfigurerAdapter() {
 

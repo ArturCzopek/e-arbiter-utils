@@ -24,20 +24,20 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2
 @EnableSwagger2
 @ConditionalOnProperty(value = "e-arbiter.swagger.enabled", matchIfMissing = true)
 @ConfigurationProperties(prefix = "e-arbiter.swagger")
-open class SwaggerConfiguration {
+class SwaggerConfiguration {
 
-    open var title: String = "e-Arbiter"
-    open var version: String = "1.0.0-SNAPSHOT"
-    open var description: String = "e-Arbiter"
-    open var contactName: String = "cyganki"
-    open var contactAddress: String = "artur@simplecoding.pl"
-    open var contactUrl: String = "http://simplecoding.pl"
+    var title: String = "e-Arbiter"
+    var version: String = "1.0.0-SNAPSHOT"
+    var description: String = "e-Arbiter"
+    var contactName: String = "cyganki"
+    var contactAddress: String = "artur@simplecoding.pl"
+    var contactUrl: String = "http://simplecoding.pl"
 
     private val API_REGEX = "/api.*"
     private val ADMIN_REGEX = "/admin.*"
 
     @Bean
-    open fun api(): Docket {
+    fun api(): Docket {
         return Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
