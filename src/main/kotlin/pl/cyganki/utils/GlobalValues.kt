@@ -15,6 +15,6 @@ object GlobalValues {
     const val GH_LOGIN = "login"
 
     // request attributes
-    const val AUTH_TOKEN = "oauth_token"
+    const val AUTH_TOKEN = "oauth-token"
     const val USER_ATTR_KEY = "user"
 }
