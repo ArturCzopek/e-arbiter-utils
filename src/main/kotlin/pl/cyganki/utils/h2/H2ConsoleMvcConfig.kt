@@ -21,8 +21,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @ConditionalOnProperty(value = "spring.h2.console.enabled", matchIfMissing = false)
 @Configuration
-open class H2ConsoleMvcConfig(
-        @Value("\${spring.h2.console.path}") var dbConsoleUrl: String
+class H2ConsoleMvcConfig(
+        @Value("\${spring.h2.console.path}") private var dbConsoleUrl: String
 ) : WebMvcConfigurerAdapter() {
 
     override fun addViewControllers(registry: ViewControllerRegistry) {

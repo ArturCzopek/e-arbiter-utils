@@ -21,8 +21,8 @@ import pl.cyganki.utils.h2.H2ConsoleMvcConfig
  */
 @ConditionalOnProperty(value = "spring.h2.console.enabled", matchIfMissing = false)
 @Configuration
-open class SwaggerMvcConfig(
-        @Value("\${e-arbiter.swagger.path:rest-api}") var swaggerUrl: String
+class SwaggerMvcConfig(
+        @Value("\${e-arbiter.swagger.path:rest-api}") private val swaggerUrl: String
 ) : WebMvcConfigurerAdapter() {
 
     override fun addViewControllers(registry: ViewControllerRegistry) {

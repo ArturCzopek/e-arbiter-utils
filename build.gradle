@@ -4,6 +4,7 @@ version = version
 apply plugin: 'idea'
 apply plugin: 'java'
 apply plugin: 'kotlin'
+apply plugin: 'kotlin-spring'
 apply plugin: 'maven-publish'
 apply plugin: 'org.sonarqube'
 
@@ -17,6 +18,7 @@ buildscript {
     }
     dependencies {
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:' + kotlinVersion
+        classpath 'org.jetbrains.kotlin:kotlin-allopen:' + kotlinVersion
         classpath 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:' + sonarVersion
     }
 }
@@ -59,7 +61,8 @@ repositories {
 }
 
 dependencies {
-    compile 'org.jetbrains.kotlin:kotlin-stdlib-jre8:' + kotlinVersion, { ext { fatJarExclude = true } }    // it means that this library won't be added to fatJar
+    compile 'org.jetbrains.kotlin:kotlin-stdlib-jre8:' + kotlinVersion
+    compile 'org.jetbrains.kotlin:kotlin-reflect:' + kotlinVersion
     compile 'org.springframework:spring-context:' + springCoreVersion
     compile 'org.springframework.boot:spring-boot-starter-web:' + springBootVersion
     compile 'org.springframework.boot:spring-boot-starter-test:' + springBootVersion

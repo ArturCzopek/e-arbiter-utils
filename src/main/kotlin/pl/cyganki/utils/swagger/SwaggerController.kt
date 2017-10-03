@@ -14,7 +14,7 @@ import springfox.documentation.annotations.ApiIgnore
 @ApiIgnore
 @Controller
 @ConditionalOnProperty(value = "e-arbiter.swagger.enabled", matchIfMissing = true)
-open class SwaggerController {
+class SwaggerController {
 
     @GetMapping(value = "\${e-arbiter.swagger.path:rest-api}")
     fun swaggerMapping() = SWAGGER_URL
