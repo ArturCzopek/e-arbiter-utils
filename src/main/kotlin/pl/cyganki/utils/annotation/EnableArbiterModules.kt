@@ -3,6 +3,7 @@ package pl.cyganki.utils.annotation
 import org.springframework.cloud.netflix.feign.EnableFeignClients
 import org.springframework.context.annotation.Import
 import pl.cyganki.utils.modules.AuthModuleInterface
+import pl.cyganki.utils.modules.ExecutorModuleInterface
 import pl.cyganki.utils.modules.TournamentResultsModuleInterface
 
 /**
@@ -18,6 +19,7 @@ import pl.cyganki.utils.modules.TournamentResultsModuleInterface
 @MustBeDocumented
 @Import(
         AuthModuleInterface::class,
+        ExecutorModuleInterface::class,
         TournamentResultsModuleInterface::class
 )
 @EnableFeignClients("pl.cyganki.utils.modules")

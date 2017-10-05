@@ -1,6 +1,6 @@
 package pl.cyganki.utils.modules.executor.model
 
-class ExecutionResult(private val status: Status, private val output: String) {
+data class ExecutionResult(var status: Status = Status.FAILURE, var output: String = "") {
 
     enum class Status {
         SUCCESS, FAILURE, TIMEOUT, INTERNAL_ERROR
