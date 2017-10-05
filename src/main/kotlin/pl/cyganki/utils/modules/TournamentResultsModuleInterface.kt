@@ -3,14 +3,11 @@ package pl.cyganki.utils.modules
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.cloud.netflix.feign.FeignClient
 import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestHeader
-import pl.cyganki.utils.GlobalValues
-import pl.cyganki.utils.security.dto.User
+import org.springframework.web.bind.annotation.RequestParam
+import pl.cyganki.utils.model.TaskUserDetails
 
 /**
- * Interface which allows us to communicate with Auth Module
+ * Interface which allows us to communicate with Tournament Results Module
  * You can inject it as a normal bean
  * To enable it, you need to turn on modules by proper property/annotation
  *
@@ -23,23 +20,19 @@ import pl.cyganki.utils.security.dto.User
  *
  * @link https://github.com/ArturCzopek/e-arbiter/blob/master/API.md
  */
-@FeignClient("authentication-module")
+@FeignClient("tournament-results-module")
 @ConditionalOnProperty(value = "e-arbiter.modules.enabled", matchIfMissing = true)
-interface AuthModuleInterface {
+interface TournamentResultsModuleInterface {
 
     // PUBLIC
 
-    @GetMapping("/api/user")
-    fun getUser(@RequestHeader(GlobalValues.AUTH_TOKEN) token: String): User
-
-    @GetMapping("/api/me")
-    fun getUserFromRequest(@RequestBody user: User): User
-
-    @GetMapping("/api/token")
-    fun getToken(): String
 
     // PRIVATE
 
-    @GetMapping("/inner/user/name/{id}")
-    fun getUserNameById(@PathVariable("id") id: Long): String
+    @GetMapping("/inner/user-details")
+    fun getTaskUserDetails(
+            @RequestParam("taskId") taskId: String,
+            @RequestParam("tournamentId") tournamentId: String,
+            @RequestParam("userId") userId: Long
+    ): TaskUserDetails
 }

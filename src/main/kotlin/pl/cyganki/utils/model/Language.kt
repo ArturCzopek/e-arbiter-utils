@@ -1,4 +1,4 @@
-package pl.cyganki.utils.modules.tournament.model
+package pl.cyganki.utils.model
 
 enum class Language {
     JAVA,

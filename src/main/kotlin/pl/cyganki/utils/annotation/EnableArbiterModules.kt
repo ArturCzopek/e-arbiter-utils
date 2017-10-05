@@ -3,6 +3,7 @@ package pl.cyganki.utils.annotation
 import org.springframework.cloud.netflix.feign.EnableFeignClients
 import org.springframework.context.annotation.Import
 import pl.cyganki.utils.modules.AuthModuleInterface
+import pl.cyganki.utils.modules.TournamentResultsModuleInterface
 
 /**
  * This indicates that communication between modules is available by proper interfaces.
@@ -15,6 +16,9 @@ import pl.cyganki.utils.modules.AuthModuleInterface
 @Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.CLASS)
 @MustBeDocumented
-@Import(AuthModuleInterface::class)
+@Import(
+        AuthModuleInterface::class,
+        TournamentResultsModuleInterface::class
+)
 @EnableFeignClients("pl.cyganki.utils.modules")
 annotation class EnableArbiterModules
