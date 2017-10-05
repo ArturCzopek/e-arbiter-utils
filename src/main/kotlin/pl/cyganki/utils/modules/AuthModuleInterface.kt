@@ -4,6 +4,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.cloud.netflix.feign.FeignClient
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestHeader
 import pl.cyganki.utils.GlobalValues
 import pl.cyganki.utils.security.dto.User
@@ -32,7 +33,7 @@ interface AuthModuleInterface {
     fun getUser(@RequestHeader(GlobalValues.AUTH_TOKEN) token: String): User
 
     @GetMapping("/api/me")
-    fun getUserFromRequest(user: User): User
+    fun getUserFromRequest(@RequestBody user: User): User
 
     @GetMapping("/api/token")
     fun getToken(): String
