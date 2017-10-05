@@ -29,10 +29,10 @@ interface TournamentResultsModuleInterface {
 
     // PRIVATE
 
-    @GetMapping("/inner/details")
+    @GetMapping("/inner/user-details")
     fun getTaskUserDetails(
             @RequestParam("taskId") taskId: String,
-            @RequestParam("userId") userId: Long,
-            @RequestParam("maxAttempts") maxAttempts: Int?
+            @RequestParam("tournamentId") tournamentId: String,
+            @RequestParam("userId") userId: Long
     ): TaskUserDetails
 }

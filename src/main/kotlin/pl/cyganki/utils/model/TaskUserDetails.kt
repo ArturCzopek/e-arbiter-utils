@@ -1,8 +1,8 @@
 package pl.cyganki.utils.model
 
 data class TaskUserDetails(
-        val taskId: String,
-        val earnedPoints: Int,
-        val userAttempts: Int,
-        val maxAttempts: Int?
+        var taskId: String = "",
+        var earnedPoints: Int = 0,
+        var userAttempts: Int = 0,
+        var maxAttempts: Int? = null
 )
