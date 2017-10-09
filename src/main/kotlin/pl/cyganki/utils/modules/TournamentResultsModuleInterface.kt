@@ -3,8 +3,11 @@ package pl.cyganki.utils.modules
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.cloud.netflix.feign.FeignClient
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestParam
 import pl.cyganki.utils.model.TaskUserDetails
+import pl.cyganki.utils.modules.tournamentresult.dto.CodeTaskResultDto
 
 /**
  * Interface which allows us to communicate with Tournament Results Module
@@ -35,4 +38,7 @@ interface TournamentResultsModuleInterface {
             @RequestParam("tournamentId") tournamentId: String,
             @RequestParam("userId") userId: Long
     ): TaskUserDetails
+
+    @PostMapping("/inner/results/code/save")
+    fun saveCodeTaskResult(@RequestBody codeTaskResultDto: CodeTaskResultDto): Boolean
 }
