@@ -39,6 +39,6 @@ interface TournamentResultsModuleInterface {
             @RequestParam("userId") userId: Long
     ): TaskUserDetails
 
-    @PostMapping("/inner/results/code/save")
+    @PostMapping("/inner/code/save")
     fun saveCodeTaskResult(@RequestBody codeTaskResultDto: CodeTaskResultDto): Boolean
 }
