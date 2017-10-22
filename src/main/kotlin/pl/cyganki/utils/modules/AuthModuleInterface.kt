@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestHeader
 import pl.cyganki.utils.GlobalValues
+import pl.cyganki.utils.model.UserNameEmail
 import pl.cyganki.utils.security.dto.User
 
 /**
@@ -42,4 +43,10 @@ interface AuthModuleInterface {
 
     @GetMapping("/inner/user/name/{id}")
     fun getUserNameById(@PathVariable("id") id: Long): String
+        
+    @GetMapping("/inner/user/names-emails/{user-ids}")
+    fun getUserNamesAndEmailsByIds(@PathVariable("user-ids") usersIds: Array<Long>): List<UserNameEmail>
+    
+    @GetMapping("/inner/user/names/all")
+    fun getAllUserNamesAndEmails(): List<UserNameEmail>
 }

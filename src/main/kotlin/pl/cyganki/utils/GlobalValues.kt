@@ -13,6 +13,7 @@ object GlobalValues {
     // GitHub keys
     const val GH_ID = "id"
     const val GH_LOGIN = "login"
+    const val GH_EMAIL = "email"
 
     // request attributes
     const val AUTH_TOKEN = "oauth-token"
