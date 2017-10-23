@@ -24,7 +24,7 @@ class AdminServiceDataController {
     @Value("\${server.port}")
     lateinit var port: String
 
-    @Value("\${spring.profiles}")
+    @Value("\${spring.profiles.active}")
     lateinit var profiles: List<String>
 
     @Value("\${logging.file}")
