@@ -1,6 +1,6 @@
 package pl.cyganki.utils.admin
 
-data class AdminModuleData(
+data class AdminServiceData(
         var serviceName: String = "",
         var port: String = "",
         var profiles: List<String> = listOf(),
@@ -8,5 +8,6 @@ data class AdminModuleData(
         var logFilePath: String = "",
         var memoryFree: String = "",
         var memoryTotal: String = "",
-        var memoryMax: String = ""
+        var memoryMax: String = "",
+        var health: String
 )

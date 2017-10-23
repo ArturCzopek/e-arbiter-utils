@@ -31,7 +31,7 @@ class AdminServiceDataController {
     lateinit var logFilePath: String
 
     @GetMapping(value = *arrayOf("/", ""))
-    fun getModuleData(): AdminModuleData = AdminModuleData(
+    fun getModuleData(): AdminServiceData = AdminServiceData(
             serviceName,
             port,
             profiles,
@@ -39,6 +39,7 @@ class AdminServiceDataController {
             logFilePath,
             "${Math.round(Runtime.getRuntime().freeMemory() / 10e6)} Mb",
             "${Math.round(Runtime.getRuntime().totalMemory() / 10e6)} Mb",
-            "${Math.round(Runtime.getRuntime().maxMemory() / 10e6)} Mb"
+            "${Math.round(Runtime.getRuntime().maxMemory() / 10e6)} Mb",
+            "OK"
     )
 }
