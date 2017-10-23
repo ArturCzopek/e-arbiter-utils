@@ -8,7 +8,6 @@ object GlobalValues {
     // Roles
     const val DEFAULT_ROLE_NAME = "User"
     const val ADMIN_ROLE_NAME = "Admin"
-    const val SYS_ADMIN_ROLE_NAME = "SysAdmin"
 
     // GitHub keys
     const val GH_ID = "id"
