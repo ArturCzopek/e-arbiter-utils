@@ -9,5 +9,5 @@ data class AdminServiceData(
         var memoryFree: String = "",
         var memoryTotal: String = "",
         var memoryMax: String = "",
-        var health: String
+        var health: String = ""
 )
