@@ -2,10 +2,9 @@ package pl.cyganki.utils.modules
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.cloud.netflix.feign.FeignClient
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import pl.cyganki.utils.model.executor.ExecutionRequest
-import pl.cyganki.utils.model.executor.ExecutionResult
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
+import pl.cyganki.utils.model.tournamentresults.UsersTasksList
 
 /**
  *
@@ -22,12 +21,12 @@ import pl.cyganki.utils.model.executor.ExecutionResult
  *
  * @link https://github.com/ArturCzopek/e-arbiter/blob/master/API.md
  */
-@FeignClient("executor-module")
+@FeignClient("tournament-module")
 @ConditionalOnProperty(value = "e-arbiter.modules.enabled", matchIfMissing = true)
-interface ExecutorModuleInterface {
+interface TournamentModuleInterface {
 
     // PRIVATE
 
-    @PostMapping("/inner/execute")
-    fun execute(@RequestBody executionRequest: ExecutionRequest): ExecutionResult
+    @GetMapping("/inner/users-tasks-list/{id}")
+    fun getUsersTasksList(@PathVariable("id") tournamentId: String): UsersTasksList
 }

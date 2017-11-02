@@ -1,4 +1,4 @@
-package pl.cyganki.utils.modules.executor.model
+package pl.cyganki.utils.model.executor
 
 import java.io.Serializable
 

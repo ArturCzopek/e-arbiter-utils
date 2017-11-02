@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestParam
 import pl.cyganki.utils.model.TaskUserDetails
-import pl.cyganki.utils.modules.tournamentresult.dto.CodeTaskResultDto
+import pl.cyganki.utils.model.tournamentresults.CodeTaskResultDto
 
 /**
  * Interface which allows us to communicate with Tournament Results Module
