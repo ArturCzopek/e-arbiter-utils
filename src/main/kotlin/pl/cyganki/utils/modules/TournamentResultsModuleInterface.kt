@@ -31,7 +31,7 @@ interface TournamentResultsModuleInterface {
 
     // PRIVATE
 
-    @GetMapping("/inner/results/{id}")
+    @PostMapping("/inner/results/{id}")
     fun getTournamentResults(@PathVariable("id") tournamentId: String, @RequestBody usersAndTasks: UsersTasksList): List<UserTournamentResults>
 
     @GetMapping("/inner/user-details/all")
