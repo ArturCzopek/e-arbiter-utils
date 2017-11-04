@@ -5,6 +5,7 @@ import org.springframework.cloud.netflix.feign.FeignClient
 import org.springframework.web.bind.annotation.*
 import pl.cyganki.utils.model.TaskUserDetails
 import pl.cyganki.utils.model.tournamentresults.CodeTaskResultDto
+import pl.cyganki.utils.model.tournamentresults.QuizTaskResultDto
 import pl.cyganki.utils.model.tournamentresults.UserTournamentResults
 import pl.cyganki.utils.model.tournamentresults.UsersTasksList
 
@@ -40,6 +41,9 @@ interface TournamentResultsModuleInterface {
 
     @PostMapping("/inner/code/save")
     fun saveCodeTaskResult(@RequestBody codeTaskResultDto: CodeTaskResultDto): Boolean
+
+    @PostMapping("/inner/quiz/save")
+    fun saveQuizTaskResult(@RequestBody quizTaskResultDto: QuizTaskResultDto): Boolean
 
     @PostMapping("/inner/results/{id}")
     fun getTournamentResults(@PathVariable("id") tournamentId: String, @RequestBody usersAndTasks: UsersTasksList): List<UserTournamentResults>
