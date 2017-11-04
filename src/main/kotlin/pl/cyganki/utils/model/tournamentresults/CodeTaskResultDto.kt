@@ -1,4 +1,4 @@
-package pl.cyganki.utils.modules.tournamentresult.dto
+package pl.cyganki.utils.model.tournamentresults
 
 import pl.cyganki.utils.model.Language
 

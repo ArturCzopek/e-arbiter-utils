@@ -43,9 +43,12 @@ interface AuthModuleInterface {
 
     @GetMapping("/inner/user/name/{id}")
     fun getUserNameById(@PathVariable("id") id: Long): String
-        
-    @GetMapping("/inner/user/names-emails/{user-ids}")
-    fun getUserNamesAndEmailsByIds(@PathVariable("user-ids") usersIds: Array<Long>): List<UserNameEmail>
+
+    @GetMapping("/inner/user/names/{users-ids}")
+    fun getUserNamesByIds(@PathVariable("users-ids") usersIds: Array<Long>): Map<Long, String>
+
+    @GetMapping("/inner/user/names-emails/{users-ids}")
+    fun getUserNamesAndEmailsByIds(@PathVariable("users-ids") usersIds: Array<Long>): List<UserNameEmail>
     
     @GetMapping("/inner/user/names-emails/all")
     fun getAllUserNamesAndEmails(): List<UserNameEmail>
