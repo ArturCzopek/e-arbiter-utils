@@ -31,9 +31,6 @@ interface TournamentResultsModuleInterface {
 
     // PRIVATE
 
-    @PostMapping("/inner/results/{id}")
-    fun getTournamentResults(@PathVariable("id") tournamentId: String, @RequestBody usersAndTasks: UsersTasksList): List<UserTournamentResults>
-
     @GetMapping("/inner/user-details/all")
     fun getTasksUserDetails(
             @RequestParam("taskIds") taskIds: List<String>,
@@ -43,4 +40,11 @@ interface TournamentResultsModuleInterface {
 
     @PostMapping("/inner/code/save")
     fun saveCodeTaskResult(@RequestBody codeTaskResultDto: CodeTaskResultDto): Boolean
+
+    @PostMapping("/inner/results/{id}")
+    fun getTournamentResults(@PathVariable("id") tournamentId: String, @RequestBody usersAndTasks: UsersTasksList): List<UserTournamentResults>
+
+    @PostMapping("/inner/results/user-place/{id}/{user-id}")
+    fun getUserPlaceInTournament(@PathVariable("id") tournamentId: String, @PathVariable("user-id") userId: Long, @RequestBody usersAndTasks: UsersTasksList): Int
+
 }
