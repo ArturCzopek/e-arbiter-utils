@@ -8,6 +8,7 @@ import pl.cyganki.utils.model.tournamentresults.CodeTaskResultDto
 import pl.cyganki.utils.model.tournamentresults.QuizTaskResultDto
 import pl.cyganki.utils.model.tournamentresults.UserTournamentResults
 import pl.cyganki.utils.model.tournamentresults.UsersTasksList
+import java.io.File
 
 /**
  * Interface which allows us to communicate with Tournament Results Module
@@ -51,4 +52,6 @@ interface TournamentResultsModuleInterface {
     @PostMapping("/inner/results/user-place/{id}/{user-id}")
     fun getUserPlaceInTournament(@PathVariable("id") tournamentId: String, @PathVariable("user-id") userId: Long, @RequestBody usersAndTasks: UsersTasksList): Int
 
+    @PostMapping("/inner/report/pdf/{id}/{name}")
+    fun getPdfReport(@PathVariable("id") tournamentId: String, @PathVariable("name") tournamentName: String, @RequestBody usersAndTasks: UsersTasksList): File
 }
