@@ -54,4 +54,7 @@ interface TournamentResultsModuleInterface {
 
     @PostMapping("/inner/report/pdf/{id}/{name}")
     fun getPdfReport(@PathVariable("id") tournamentId: String, @PathVariable("name") tournamentName: String, @RequestBody usersAndTasks: UsersTasksList): File
+
+    @PostMapping("/inner/report/xlsx/{id}/{name}")
+    fun getXlsxReport(@PathVariable("id") tournamentId: String, @PathVariable("name") tournamentName: String, @RequestBody usersAndTasks: UsersTasksList): File
 }
