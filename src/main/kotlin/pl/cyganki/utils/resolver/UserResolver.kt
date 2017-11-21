@@ -10,6 +10,7 @@ import org.springframework.web.context.request.NativeWebRequest
 import org.springframework.web.method.support.HandlerMethodArgumentResolver
 import org.springframework.web.method.support.ModelAndViewContainer
 import pl.cyganki.utils.GlobalValues
+import pl.cyganki.utils.exception.DisabledUserException
 import pl.cyganki.utils.security.dto.User
 
 /**
@@ -28,14 +29,14 @@ class UserResolver : HandlerMethodArgumentResolver {
     override fun supportsParameter(parameter: MethodParameter?) = parameter?.parameterType == User::class.java
 
     override fun resolveArgument(parameter: MethodParameter?, mavContainer: ModelAndViewContainer?,
-                                 webRequest: NativeWebRequest?, binderFactory: WebDataBinderFactory?): Any {
-
-        if (this.supportsParameter(parameter)) {
-            return ObjectMapper().readValue(webRequest?.getHeader(GlobalValues.USER_ATTR_KEY), User::class.java)
-        }
-
-        return WebArgumentResolver.UNRESOLVED
-    }
+                                 webRequest: NativeWebRequest?, binderFactory: WebDataBinderFactory?) =
+            if (this.supportsParameter(parameter)) {
+                with(ObjectMapper().readValue(webRequest?.getHeader(GlobalValues.USER_ATTR_KEY), User::class.java)) {
+                    if (this.enabled) this else throw DisabledUserException(this.name)
+                }
+            } else {
+                WebArgumentResolver.UNRESOLVED
+            }
 
     companion object : KLogging()
 }

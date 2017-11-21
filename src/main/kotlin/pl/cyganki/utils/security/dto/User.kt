@@ -10,12 +10,13 @@ import java.io.Serializable
 data class User(
         var id: Long = 0,
         var name: String = "",
-        var roles: List<Role> = emptyList()
+        var roles: List<Role> = emptyList(),
+        var enabled: Boolean = true
 ) : Serializable {
 
     companion object {
         private const val serialVersionUID = -3858804629202513129L
     }
 
-    override fun toString() = "{\"id\": $id, \"name\": \"$name\", \"roles\": [${roles.joinToString(separator = ",")}]}"
+    override fun toString() = "{\"id\": $id, \"name\": \"$name\", \"roles\": [${roles.joinToString(separator = ",")}], \"enabled\": $enabled}"
 }
