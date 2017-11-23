@@ -27,7 +27,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2
 class SwaggerConfiguration {
 
     var title: String = "e-Arbiter"
-    var version: String = "1.0.0-SNAPSHOT"
+    var version: String = "1.0.0"
     var description: String = "e-Arbiter"
     var contactName: String = "cyganki"
     var contactAddress: String = "artur@simplecoding.pl"

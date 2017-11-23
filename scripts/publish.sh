@@ -8,6 +8,10 @@ if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]
 then
     echo "Publish new version on maven repository"
     ./gradlew publish
+elif [[ $TRAVIS_BRANCH == 'release' && $TRAVIS_PULL_REQUEST == 'false' ]]
+then
+    echo "Publish new release version on maven repository"
+    ./gradlew publish
 else
     echo "No publish"
 fi
